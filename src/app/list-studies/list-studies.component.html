@@ -1,0 +1,27 @@
+<div class="container" style="text-align: center;" *ngIf="selectedStudy == null">
+
+    <h5 class="m-3" style="color:brown">Scheduled Bible Studies 📃</h5>
+    <div class="row">
+
+        <div class="col-2">
+        </div>
+
+        <div class="col-8">
+            <p style="text-align: end;"><i>Hint: Click on a Study to Edit</i></p>
+            <div class="list-group">
+                <button class="list-group-item btn btn-info"  active *ngFor="let study of studies"
+                (click)="onSelectStudy(study)">
+                Study of "{{study.study_name}}"" by {{study.teacher_name}} &#64; {{study.start_date_time | date:'MM/dd/yyyy'}}
+            </button>
+            </div>
+      
+        </div>
+        <div class="col-2">
+        </div>
+
+    </div>
+
+
+</div>
+
+<app-edit-study *ngIf="selectedStudy" [study]="selectedStudy"></app-edit-study>

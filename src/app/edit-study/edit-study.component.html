@@ -1,0 +1,74 @@
+<div class="container" style="text-align: center;">
+    <h5 class="m-3" style="color:blue">Editing Bible Study "{{ study!.study_name }}"</h5>
+    <div class="row">
+
+        <div class="col-2">
+        </div>
+
+        <div class="col-8">
+            <div align="center" style="margin-left:50px;margin-right:50px" *ngIf="!wasSubmitted && !wasDeleted">
+
+                <form (ngSubmit)="onSubmit()" #createForm="ngForm">
+                    <div class="form-group">
+                        <label for="study">Bible Study</label>
+                        <input id="study_name" type="text" class="form-control" aria-describedby="helpStudy_Name"
+                            placeholder="Enter the name of the Bible Study" required [(ngModel)]="study!.study_name"
+                            name="study_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher_name">Teacher Name</label>
+                        <input id="teacher_name" type="text" class="form-control" aria-describedby="helpTeacher_Name"
+                            placeholder="Enter the name of the teacher who will be teaching the Bible Study" required
+                            [(ngModel)]="study!.teacher_name" name="teacher_name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="max_enrollment_count">Max Enrollment Count</label>
+                        <input id="max_enrollment_count" type="number" class="form-control"
+                            aria-describedby="helpMax_Enrollment_Count" required
+                            [(ngModel)]="study!.max_enrollment_count" name="max_enrollment_count">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="start_date_time">Start Date Time</label>
+                        <input id="start_date_time" type="datetime-local" class="form-control"
+                            aria-describedby="helpStart_Date_Time" required [(ngModel)]="study!.start_date_time"
+                            name="start_date_time">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="end_date_time">End Date Time</label>
+                        <input id="end_date_time" type="datetime-local" class="form-control"
+                            aria-describedby="helpEnd_Date_Time" required  [(ngModel)]="study!.end_date_time"
+                            name="end_date_time">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="room_number">Room Number</label>
+                        <input id="room_number" type="text" class="form-control" aria-describedby="helpRoom_Number"
+                            required [(ngModel)]="study!.room_number" name="room_number">
+                    </div>
+                    <br/>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <br/>
+                    <button style="float:right" type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
+                </form>
+
+            </div>
+            <div *ngIf="wasSubmitted">
+                Bible Study was edited successfully.
+            </div>
+            <div *ngIf="wasDeleted">
+                Bible Study was deleted successfully.
+            </div>
+
+        </div>
+        <div class="col-2">
+        </div>
+
+    </div>
+
+
+</div>
